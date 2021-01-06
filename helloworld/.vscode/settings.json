@@ -1,0 +1,16 @@
+{
+    "files.autoGuessEncoding": true,
+    "files.associations": {
+        "*.mat": "clojure",
+        "*.config": "makefile",
+        "ostream": "cpp",
+        "string_view": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "string": "cpp",
+        "sstream": "cpp",
+        "iosfwd": "cpp"
+    },
+    "cmake.configureOnOpen": true,
+    "jupyter.enableCellCodeLens": false
+}
