@@ -60,6 +60,7 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "hash_map": "cpp"
+        "hash_map": "cpp",
+        "cassert": "cpp"
     }
 }
