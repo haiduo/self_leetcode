@@ -61,6 +61,13 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "hash_map": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "chrono": "cpp",
+        "csignal": "cpp",
+        "deque": "cpp",
+        "fstream": "cpp",
+        "ratio": "cpp",
+        "stack": "cpp",
+        "thread": "cpp"
     }
 }

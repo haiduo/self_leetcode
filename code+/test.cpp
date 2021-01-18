@@ -1,16 +1,13 @@
 #include <iostream>
-using namespace std; 
-class Box{
-   public:
-      Box() { 
-         cout << "调用构造函数！" <<endl; 
-      }
-      ~Box() { 
-         cout << "调用析构函数！" <<endl; 
-      }
-}; 
-int main( ){
-   Box* myBoxArray = new Box[4];
-   delete [] myBoxArray; // 删除数组
-   return 0;
+#include <vector>
+using std::vector;
+int main(void){
+    vector<int> v;
+    std::cout<<"v.size() == " << v.size() << " v.capacity() = " << v.capacity() << std::endl;
+    v.reserve(10);
+    std::cout<<"v.size() == " << v.size() << " v.capacity() = " << v.capacity() << std::endl;
+    v.resize(10);
+    v.push_back(0);
+    std::cout<<"v.size() == " << v.size() << " v.capacity() = " << v.capacity() << std::endl;
+    return 0;
 }

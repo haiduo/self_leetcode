@@ -13,7 +13,7 @@ static ListNode *tail = NULL;//记录最后一个结点
 //插入一个新节点到链表中(放在链表头部)
 void CreateList(ListNode *&head, int data){
     //创建新节点
-    ListNode *p = new ListNode();
+    ListNode *p = (ListNode *)malloc(sizeof(ListNode));
     p->value = data;
     if(data == 0){
         tail = p;
