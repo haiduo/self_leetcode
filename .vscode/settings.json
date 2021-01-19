@@ -68,6 +68,7 @@
         "fstream": "cpp",
         "ratio": "cpp",
         "stack": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "queue": "cpp"
     }
 }
