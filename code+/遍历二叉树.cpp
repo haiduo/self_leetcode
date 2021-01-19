@@ -195,6 +195,38 @@ int maxWidthUseMap (Node* root){
     }
 }
 
+int maxWidthNoMap(Node * root){
+    if(root == NULL){
+        return 0;
+    }else{
+        queue<Node*> q;
+        q.push(root);
+        Node* curEnd = root;//当前层，最右节点是谁
+        Node* nextEnd = NULL;//下一层，最右节点是谁
+        int curLevelWidth = 0;//当前层curLeveld的宽度(也就是当前层的节点数)
+        int maxwidth = 0;//记录最大的层的宽度
+        while (!q.empty()){
+            Node* cur = q.front();
+            q.pop();
+            if(cur->left != NULL) {
+                q.push(cur->left);
+                nextEnd = cur->left;
+            }
+            if(cur->right != NULL) {
+                q.push(cur->right);
+                nextEnd = cur->right;
+            }       
+            curLevelWidth++; //当前层每弹出一个节点，则当前层宽度加1
+            if(cur == curEnd) {
+                maxwidth = max(maxwidth , curLevelWidth);//比较是否为最大宽度层
+                curLevelWidth = 0; //从下一层开始, 没有弹出任何节点，宽度为0，继续上述操作
+                curEnd = nextEnd;
+            }
+        }
+        return maxwidth;
+    }
+}
+
 int main(void){
     Node* root=NULL;
     cout << "按前序遍历方式创建树" <<endl;
@@ -212,6 +244,9 @@ int main(void){
     cout<<endl;   
     level(root);        //层次 队列   
     cout<<endl;   
-    cout<<maxWidthUseMap(root);        //树的宽度 队列  
+    cout<<maxWidthUseMap(root);        //二叉树的宽度 队列+map
+    cout<<endl; 
+    cout<<maxWidthNoMap(root);        //二叉树的宽度 队列   
+
     return 0;
 }
