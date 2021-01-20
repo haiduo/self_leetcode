@@ -46,6 +46,35 @@ void midOrder(Node* root) {
         midOrder(root->right);				 //遍历右子树
     }
 }
+
+//求取当前节点最右的孩子
+Node* getRightMost(Node* node) {
+    if (node == NULL) {
+        return node;
+    }
+    while (node->right != NULL) {
+        node = node->right;
+    }
+    return node;
+}
+//返回当前节点的前驱节点（中序）
+Node* getSuccessorPreNode(Node* node) {
+    if (node == NULL ) {
+        return NULL;
+    }
+    if (node->left != NULL ) {
+        return getRightMost(node->left);     
+    }
+    else {//无左子树
+        Node* parentnode = node->parent;
+        while (parentnode != NULL && parentnode->left == node) {//当前节点是其父节点的右孩子
+            node = parentnode;
+            parentnode = node->parent;
+        }
+        return parentnode;
+    }
+}
+
 //求取当前节点最左的孩子
 Node* getLeftMost(Node* node) {
     if (node == NULL) {
@@ -57,7 +86,7 @@ Node* getLeftMost(Node* node) {
     return node;
 }
 //返回当前节点的后继节点（中序）
-Node* getSuccessorNode(Node* node) {
+Node* getSuccessorNextNode(Node* node) {
     if (node == NULL) {
         return NULL;
     }
@@ -73,16 +102,17 @@ Node* getSuccessorNode(Node* node) {
         return parentnode;
     }
 }
-
 int main(void) {
-    Node* root = NULL, * curnode = NULL, * nextnode = NULL;
+    Node* root = NULL, * curnode = NULL, * nextnode = NULL,* prenode=NULL;
     cout << "按前序遍历方式创建树" << endl;
     //"ABDG##H###CE#I##F##";
     root = CreateBiTree();
     midOrder(root);			//中序遍历 递归
     cout << endl;
     curnode = root->left->left->right;//H节点
-    nextnode = getSuccessorNode(curnode);
+    prenode = getSuccessorPreNode(curnode);
+    cout << prenode->data << endl;
+    nextnode = getSuccessorNextNode(curnode);
     cout << nextnode->data << endl;
     return 0;
 }

@@ -3,6 +3,8 @@
 #include <stack> 
 #include <queue>
 #include <unordered_map>
+#include <string>
+#include <iomanip>
 using namespace std;
 
 typedef char ElemType;
@@ -351,6 +353,20 @@ Node* buildByLevelQueue(queue<ElemType> levelist) {
         return root;
     }
 }
+//打印二叉树
+void printInOrder(Node * root, int height, string to, int len ){
+    if(root == NULL){
+        return ;
+    }else{
+        printInOrder(root->right, height + 1, "v", len);//V表示指向父节点
+        string val = to + root->data + to;
+        cout.width((height * len) + len);          // 设置显示域宽10 
+        cout.fill(' ');          // 在显示区域空白处用' '填充
+        cout<<setiosflags(ios::right);   // 设置右对齐
+        cout<<val<<endl;
+        printInOrder(root->left, height + 1, "^", len);//^表示指向父节点
+    }
+}
 
 int main(void) {
     Node* root = NULL;
@@ -400,6 +416,8 @@ int main(void) {
     root = buildByLevelQueue(prelist1);        //反序列化构建二叉树 队列
     preOrder(root);			//前序遍历 递归
     cout << endl;
+    printInOrder(root, 0, "H",  5);//打印二叉树 横着打印 H代表头节点，0表示当前高度，5为数值data的宽度
+
     system("pause");
     return 0;
 }
