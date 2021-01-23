@@ -20,8 +20,8 @@ Employee* CreateBiTree() {
     }
     else {   //递归的创建左右子树
         current = new Employee(value);
-        for(int i= 0; i < current->nexts.size(); i++){
-            current->nexts[i] = CreateBiTree();
+        for (Employee *next : current->nexts){
+                next = CreateBiTree();    
         }
         return current;
     }
@@ -32,8 +32,8 @@ void preOrder(Employee* root) {
         return;
     else {
         cout << root->happy << "  -->  ";     //首先打印根节点
-        for(int i= 0; i < root->nexts.size(); i++){
-            preOrder(root->nexts[i]);
+        for(Employee *next : root->nexts){
+            preOrder(next);
         }
     }
 }
