@@ -16,7 +16,6 @@ public:
 	int inversed() {
 		int s = 0;
 		while (_num / 10 != 0) {
-
 			s += (_num % 10);
 			s *= 10;
 			_num /=10;

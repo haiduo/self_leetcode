@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -6,7 +7,7 @@ int main(int argc, char *argv[])
     int n, sum, min, max;
     cout<<"input a count of list integers :"; 
     cin>>n;
-    int a[n];
+    vector<int> a;
     cout<<"then input list integers :";
     cin>>a[0];
     sum=min=max=a[0];

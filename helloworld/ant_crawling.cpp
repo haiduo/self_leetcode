@@ -1,9 +1,7 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
-
-int max(int m,int n);
-int min(int m,int n);
 
 int main()
 {
@@ -11,7 +9,7 @@ int main()
 	cout<<"input N and L:";//N is the number of ants;L is the length of branch (N<+L)
 	while(cin>>N>>L)
 	{
-		int d[N];
+		vector<int> d;
 		i=0,maxT=0,minT=0;
 		cout<<"input evey sites of ants:";
 		while(i<N)
@@ -30,12 +28,4 @@ int main()
 	}
 	
 	return 0;
-}
-int max(int m,int n)
-{
-	return m>n?m:n;
-}
-int min(int m,int n)
-{
-	return m<n?m:n;
 }
