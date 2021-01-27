@@ -2,7 +2,14 @@
 #include <string>
 
 using namespace std;
-
+/*  
+输入：
+aabbccbbaa
+aabbcccbbaa
+输出：
+abcba
+false
+*/
 bool is_double_symmetrical(const string &str){
     const int n = str.length();
     if (n & 1){//位与操作
@@ -32,15 +39,15 @@ string deduplicate(const string &str){
         return "";
     }
     const int n = str.length();
-    if (n & 1){
+    if (n & 1){//deduplicate()依赖上一个函数的结果，如果上一个函数的逻辑不对，在这里加判断能够快速定位问题
         return "<invalid>";
     }
     string res;
-    res.reserve(n >> 1);//3493888
+    res.reserve(n >> 1);// 确定新的分配存储的最小长度
     for (int i = 0; i < n; i += 2){
         res.push_back(str[i]);
     }
-    return move(res);
+    return move(res);//将一个左值强制转化为右值引用，继而可以通过右值引用使用该值，以用于移动语义。从实现上讲，std::move基本等同于一个类型转换：static_cast<T&&>(lvalue);
 }
 
 int main(){
